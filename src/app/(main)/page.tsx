@@ -3,7 +3,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PostEditor from "@/components/post/editor/PostEditor";
 import prisma from "@/lib/prisma";
 import Post from "@/components/post/Post";
-import { postDataInclude } from "@/lib/types";
 import TrendsSidebar from "@/components/TrendsSidebar";
 import ForYouFeed from "./ForYouFeed";
 
