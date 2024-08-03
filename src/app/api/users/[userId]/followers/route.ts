@@ -61,6 +61,15 @@ export async function POST(
       return Response.json({ error: "Unauthorized" }, { status: 401 });
     }
 
+    // Ajouter des logs pour vérifier les données reçues
+    console.log("Logged in user ID:", loggedInUser.id);
+    console.log("Target user ID:", userId);
+
+    // Validation
+    if (!userId) {
+      return Response.json({ error: "User ID is required" }, { status: 400 });
+    }
+
     await prisma.follow.upsert({
       where: {
         followerId_followingId: {
