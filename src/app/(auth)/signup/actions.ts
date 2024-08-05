@@ -9,6 +9,8 @@ import { generateIdFromEntropySize } from "lucia";
 import { isRedirectError } from "next/dist/client/components/redirect";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import streamServerClient from "@/lib/stream";
+
 
 
 
@@ -56,15 +58,22 @@ export async function signUp(
           };
         }
 
-        await prisma.user.create({
-            data:{
-                id: userId,
-                username,
-                displayName: username,
-                email,
-                passwordHash
-            }
-        })
+        await prisma.$transaction(async (tx) => {
+          await tx.user.create({
+            data: {
+              id: userId,
+              username,
+              displayName: username,
+              email,
+              passwordHash,
+            },
+          });
+          await streamServerClient.upsertUser({
+            id: userId,
+            username,
+            name: username,
+          });
+        });
     
         const session = await lucia.createSession(userId, {});
         const sessionCookie = lucia.createSessionCookie(session.id);

@@ -120,7 +120,7 @@ async function UserProfile({ user, loggedInUserId }: UserProfileProps) {
           </div>
         </div>
         {user.id === loggedInUserId ? (
-        <Button>Edit Profile</Button>
+          <EditProfileButton user={user} />
         ) : (
           <FollowButton userId={user.id} initialState={followerInfo} />
         )}

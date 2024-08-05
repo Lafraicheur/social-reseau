@@ -14,14 +14,12 @@ export default function EditProfileButton({ user }: EditProfileButtonProps) {
 
   return (
     <>
-      <Button variant="outline" onClick={() => setShowDialog(true)}>
-        Edit profile
-      </Button>
-      {/* <EditProfileDialog
+      <EditProfileDialog
         user={user}
         open={showDialog}
         onOpenChange={setShowDialog}
-      /> */}
+      />
+      <Button variant="outline" onClick={() => setShowDialog(true)}>Edit Profile</Button>
     </>
   );
 }

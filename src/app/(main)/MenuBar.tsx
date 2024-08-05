@@ -3,12 +3,32 @@ import { Button } from "@/components/ui/button";
 import prisma from "@/lib/prisma";
 import { Bookmark, Home, Bell, Mail, Heart } from "lucide-react";
 import Link from "next/link";
+import NotificationsButton from "./NotificationsButton";
+import MessagesButton from "./MessagesButton";
+import streamServerClient from "@/lib/stream";
+
+
 
 interface MenuBarProps {
   className?: string;
 }
 
 export default async function MenuBar({ className }: MenuBarProps) {
+  const { user } = await validateRequest();
+
+  if (!user) return null;
+
+  const [unreadNotificationsCount, unreadMessagesCount] = await Promise.all([
+    prisma.notification.count({
+      where: {
+        recipientId: user.id,
+        read: false,
+      },
+    }),
+    (await streamServerClient.getUnreadCount(user.id)).total_unread_count,
+  ]);
+
+
   return (
     <div className={className}>
       <Button
@@ -23,17 +43,10 @@ export default async function MenuBar({ className }: MenuBarProps) {
         </Link>
       </Button>
 
-      <Button
-        variant="ghost"
-        className="flex items-center justify-start gap-3"
-        title="Notifications"
-        asChild
-      >
-        <Link href="#">
-          <Bell />
-          <span className="hidden lg:inline">Notifications</span>
-        </Link>
-      </Button>
+      <NotificationsButton
+        initialState={{ unreadCount: unreadNotificationsCount }}
+      />
+      <MessagesButton initialState={{ unreadCount: unreadMessagesCount }} />
 
       <Button
         variant="ghost"
@@ -41,7 +54,7 @@ export default async function MenuBar({ className }: MenuBarProps) {
         title="Message"
         asChild
       >
-        <Link href="#">
+        <Link href="/messages">
           <Mail />
           <span className="hidden lg:inline">Messages</span>
         </Link>
@@ -53,8 +66,8 @@ export default async function MenuBar({ className }: MenuBarProps) {
         title="Bookmarks"
         asChild
       >
-        <Link href="#">
-          <Heart />
+        <Link href="/bookmarks">
+          <Bookmark />
           <span className="hidden lg:inline">Favories</span>
         </Link>
       </Button>

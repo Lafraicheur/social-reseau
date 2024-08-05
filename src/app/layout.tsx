@@ -4,8 +4,8 @@ import { ThemeProvider } from "next-themes";
 import localFont from "next/font/local";
 import { Toaster } from "@/components/ui/toaster";
 import ReactQueryProvider from "./ReactQueryProvider";
-// import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
-// import { extractRouterConfig } from "uploadthing/server";
+import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
+import { extractRouterConfig } from "uploadthing/server";
 import { fileRouter } from "./api/uploadthing/core";
 
 
@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {/* <NextSSRPlugin routerConfig={extractRouterConfig(fileRouter)} /> */}
+        <NextSSRPlugin routerConfig={extractRouterConfig(fileRouter)} />
         <ReactQueryProvider>
           <ThemeProvider
             attribute="class"
