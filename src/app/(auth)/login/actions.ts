@@ -3,7 +3,6 @@
 import { lucia } from "@/auth";
 import prisma from "@/lib/prisma";
 import { loginSchema, LoginValues } from "@/lib/validation";
-import { verify } from "@node-rs/argon2";
 import { isRedirectError } from "next/dist/client/components/redirect";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -23,17 +22,7 @@ export async function login(
       },
     });
 
-    if (!existingUser || !existingUser.passwordHash) {
-      return {
-        error: "Username ou mot de passe incorrect",
-      };
-    }
-
-    const validPassword = await verify(existingUser.passwordHash, password, {
-
-    });
-
-    if (!validPassword) {
+    if (!existingUser || existingUser.passwordHash !== password) {
       return {
         error: "Username ou mot de passe incorrect",
       };
