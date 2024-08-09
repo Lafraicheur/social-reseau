@@ -49,7 +49,7 @@ export default async function Page({ params: { postId } }: PageProps) {
   if (!user) {
     return (
       <p className="text-destructive">
-        Vous n&apos;êtes pas autorisé à consulter cette page.
+        Vous n'êtes pas autorisé à consulter cette page.
       </p>
     );
   }

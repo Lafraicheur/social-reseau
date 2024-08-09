@@ -42,7 +42,7 @@ export default function UserPosts({ userId }: UserPostsProps) {
   if (status === "success" && !posts.length && !hasNextPage) {
     return (
       <p className="text-center text-muted-foreground">
-        Cet utilisateur n'a encore rien publié.
+        Cet utilisateur n&apos;a encore rien publié.
       </p>
     );
   }
@@ -50,7 +50,7 @@ export default function UserPosts({ userId }: UserPostsProps) {
   if (status === "error") {
     return (
       <p className="text-center text-destructive">
-        Une erreur s'est produite lors du chargement des publications.
+        Une erreur s&apos;est produite lors du chargement des publications.
       </p>
     );
   }

@@ -47,7 +47,7 @@ export default function FollowingFeed() {
   if (status === "error") {
     return (
       <p className="text-center text-destructive">
-        Une erreur s'est produite lors du chargement des publications.{" "}
+        Une erreur s&apos;est produite lors du chargement des publications.{" "}
       </p>
     );
   }

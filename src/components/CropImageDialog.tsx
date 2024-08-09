@@ -36,7 +36,7 @@ export default function CropImageDialog({
     <Dialog open onOpenChange={onClose}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Recadrer l'image</DialogTitle>
+          <DialogTitle>Recadrer l&apos;image</DialogTitle>
         </DialogHeader>
         <Cropper
           src={src}

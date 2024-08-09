@@ -99,7 +99,7 @@ export default function EditProfileDialog({
               name="displayName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Nom d'utilisateur</FormLabel>
+                  <FormLabel>Nom d&apos;utilisateur</FormLabel>
                   <FormControl>
                     <Input placeholder="Your display name" {...field} />
                   </FormControl>

@@ -24,7 +24,7 @@ export default function Page() {
             </div>
             <LoginForm />
             <Link href="/signup" className="block text-center hover:underline">
-            Vous n&apos;avez pas de compte ? Inscrivez-vous
+            Vous navez pas de compte ? Inscrivez-vous
             </Link>
           </div>
         </div>

@@ -5,7 +5,7 @@ export default function NotFound() {
   return (
     <main className="my-12 w-full space-y-3 text-center">
       <h1 className="text-3xl font-bold">Pas trouvé</h1>
-      <p>La page que vous recherchez n'existe pas.</p>
+      <p>La page que vous recherchez n&apos;existe pas.</p>
       <Image
         src={ErrorImage}
         alt="Page non trouvée"

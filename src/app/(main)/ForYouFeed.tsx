@@ -40,7 +40,7 @@ export default function ForYouFeed() {
   if (status === "success" && !posts.length && !hasNextPage) {
     return (
       <p className="text-center text-muted-foreground">
-        Personne n'a encore rien posté.
+        Personne n&apos;a encore rien posté.
       </p>
     );
   }

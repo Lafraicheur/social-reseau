@@ -142,7 +142,7 @@ export default function NewChatDialog({
             {isFetching && <Loader2 className="mx-auto my-3 animate-spin" />}
             {isError && (
               <p className="my-3 text-center text-destructive">
-               Une erreur s&apos;est produite lors du chargement des utilisateurs.
+               Une erreur s est produite lors du chargement des utilisateurs.
               </p>
             )}
           </div>

@@ -38,7 +38,7 @@ export default function Bookmarks() {
   if (status === "success" && !posts.length && !hasNextPage) {
     return (
       <p className="text-center text-muted-foreground">
-        Vous n&apos;avez pas encore de favoris.
+        Vous n'avez pas encore de favoris.
       </p>
     );
   }
@@ -46,7 +46,7 @@ export default function Bookmarks() {
   if (status === "error") {
     return (
       <p className="text-center text-destructive">
-        Une erreur s&apos;est produite lors du chargement des favoris.
+        Une erreur sest produite lors du chargement des favoris.
       </p>
     );
   }
