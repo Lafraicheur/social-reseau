@@ -38,7 +38,7 @@ export default function Bookmarks() {
   if (status === "success" && !posts.length && !hasNextPage) {
     return (
       <p className="text-center text-muted-foreground">
-        Vous n'avez pas encore de favoris.
+        Vous n&apos;avez pas encore de favoris.
       </p>
     );
   }
