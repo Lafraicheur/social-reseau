@@ -18,7 +18,7 @@ export default function Comments({ post }: CommentsProps) {
         kyInstance
           .get(
             `/api/posts/${post.id}/comments`,
-            pageParam ? { searchParams: { cursor: pageParam } } : {},
+            pageParam ? { searchParams: { cursor: pageParam } } : {}
           )
           .json<CommentsPage>(),
       initialPageParam: null as string | null,
@@ -41,16 +41,16 @@ export default function Comments({ post }: CommentsProps) {
           disabled={isFetching}
           onClick={() => fetchNextPage()}
         >
-          Load previous comments
+          Charger les commentaires précédents
         </Button>
       )}
       {status === "pending" && <Loader2 className="mx-auto animate-spin" />}
       {status === "success" && !comments.length && (
-        <p className="text-center text-muted-foreground">No comments yet.</p>
+        <p className="text-center text-muted-foreground">aucun commentaire pour l'instant.</p>
       )}
       {status === "error" && (
         <p className="text-center text-destructive">
-          An error occurred while loading comments.
+          Une erreur s'est produite lors du chargement des commentaires.
         </p>
       )}
       <div className="divide-y">

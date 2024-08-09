@@ -90,7 +90,7 @@ export default function NewChatDialog({
     <Dialog open onOpenChange={onOpenChange}>
       <DialogContent className="bg-card p-0">
         <DialogHeader className="px-6 pt-6">
-          <DialogTitle>New chat</DialogTitle>
+          <DialogTitle>Nouvelle discussion</DialogTitle>
         </DialogHeader>
         <div>
           <div className="group relative">
@@ -136,13 +136,13 @@ export default function NewChatDialog({
               ))}
             {isSuccess && !data.users.length && (
               <p className="my-3 text-center text-muted-foreground">
-                No users found. Try a different name.
+                Aucun utilisateur trouvé. Essayez un autre nom.
               </p>
             )}
             {isFetching && <Loader2 className="mx-auto my-3 animate-spin" />}
             {isError && (
               <p className="my-3 text-center text-destructive">
-                An error occurred while loading users.
+               Une erreur s&apos;est produite lors du chargement des utilisateurs.
               </p>
             )}
           </div>
@@ -153,7 +153,7 @@ export default function NewChatDialog({
             loading={mutation.isPending}
             onClick={() => mutation.mutate()}
           >
-            Start chat
+            Démarrer la discussion
           </LoadingButton>
         </DialogFooter>
       </DialogContent>

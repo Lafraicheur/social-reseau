@@ -34,10 +34,10 @@ export default function DeletePostDialog({
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Delete post?</DialogTitle>
+          <DialogTitle>Supprimer le message?</DialogTitle>
           <DialogDescription>
-            Are you sure you want to delete this post? This action cannot be
-            undone.
+          Es-tu sur de vouloir supprimer cette annonce? Cette action ne peut pas être
+          défait.
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
@@ -46,14 +46,14 @@ export default function DeletePostDialog({
             onClick={() => mutation.mutate(post.id, { onSuccess: onClose })}
             loading={mutation.isPending}
           >
-            Delete
+            Supprimer
           </LoadingButton>
           <Button
             variant="outline"
             onClick={onClose}
             disabled={mutation.isPending}
           >
-            Cancel
+            Annuler
           </Button>
         </DialogFooter>
       </DialogContent>

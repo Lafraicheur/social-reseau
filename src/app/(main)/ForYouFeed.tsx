@@ -40,7 +40,7 @@ export default function ForYouFeed() {
   if (status === "success" && !posts.length && !hasNextPage) {
     return (
       <p className="text-center text-muted-foreground">
-        No one has posted anything yet.
+        Personne n'a encore rien posté.
       </p>
     );
   }
@@ -48,7 +48,7 @@ export default function ForYouFeed() {
   if (status === "error") {
     return (
       <p className="text-center text-destructive">
-        Un erreur est survenus au niveau du chargement des posts
+        Une erreur est survenue au niveau du chargement des posts
       </p>
     );
   }

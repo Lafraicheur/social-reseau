@@ -26,7 +26,7 @@ export default function UserPosts({ userId }: UserPostsProps) {
       kyInstance
         .get(
           `/api/users/${userId}/posts`,
-          pageParam ? { searchParams: { cursor: pageParam } } : {},
+          pageParam ? { searchParams: { cursor: pageParam } } : {}
         )
         .json<PostsPage>(),
     initialPageParam: null as string | null,
@@ -42,7 +42,7 @@ export default function UserPosts({ userId }: UserPostsProps) {
   if (status === "success" && !posts.length && !hasNextPage) {
     return (
       <p className="text-center text-muted-foreground">
-        This user hasn&apos;t posted anything yet.
+        Cet utilisateur n'a encore rien publié.
       </p>
     );
   }
@@ -50,7 +50,7 @@ export default function UserPosts({ userId }: UserPostsProps) {
   if (status === "error") {
     return (
       <p className="text-center text-destructive">
-        An error occurred while loading posts.
+        Une erreur s'est produite lors du chargement des publications.
       </p>
     );
   }

@@ -27,7 +27,7 @@ export default function Notifications() {
       kyInstance
         .get(
           "/api/notifications",
-          pageParam ? { searchParams: { cursor: pageParam } } : {},
+          pageParam ? { searchParams: { cursor: pageParam } } : {}
         )
         .json<NotificationsPage>(),
     initialPageParam: null as string | null,
@@ -61,7 +61,7 @@ export default function Notifications() {
   if (status === "success" && !notifications.length && !hasNextPage) {
     return (
       <p className="text-center text-muted-foreground">
-        You don&apos;t have any notifications yet.
+        Vous n&apos;avez encore aucune notification.
       </p>
     );
   }
@@ -69,7 +69,7 @@ export default function Notifications() {
   if (status === "error") {
     return (
       <p className="text-center text-destructive">
-        An error occurred while loading notifications.
+        Une erreur s&apos;est produite lors du chargement des notifications.
       </p>
     );
   }

@@ -48,14 +48,14 @@ export function useSubmitCommentMutation(postId: string) {
       });
 
       toast({
-        description: "Comment created",
+        description: "Commentaire créé",
       });
     },
     onError(error) {
       console.error(error);
       toast({
         variant: "destructive",
-        description: "Failed to submit comment. Please try again.",
+        description: "Échec de l'envoi du commentaire. Veuillez réessayer.",
       });
     },
   });
@@ -91,14 +91,14 @@ export function useDeleteCommentMutation() {
       );
 
       toast({
-        description: "Comment deleted",
+        description: "Commentaire supprimé",
       });
     },
     onError(error) {
       console.error(error);
       toast({
         variant: "destructive",
-        description: "Failed to delete comment. Please try again.",
+        description: "Échec de la suppression du commentaire. Veuillez réessayer.",
       });
     },
   });

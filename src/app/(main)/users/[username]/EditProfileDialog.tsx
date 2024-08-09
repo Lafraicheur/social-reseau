@@ -48,6 +48,7 @@ export default function EditProfileDialog({
     defaultValues: {
       displayName: user.displayName,
       bio: user.bio || "",
+      email: user.email || "",
     },
   });
 
@@ -70,7 +71,7 @@ export default function EditProfileDialog({
           setCroppedAvatar(null);
           onOpenChange(false);
         },
-      },
+      }
     );
   }
 
@@ -78,10 +79,9 @@ export default function EditProfileDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
+          <DialogTitle className="text-center">Editer le profil</DialogTitle>
         </DialogHeader>
-        <div className="space-y-1.5">
-          <Label>Avatar</Label>
+        <div className="flex flex-col items-center space-y-1.5">
           <AvatarInput
             src={
               croppedAvatar
@@ -90,6 +90,7 @@ export default function EditProfileDialog({
             }
             onImageCropped={setCroppedAvatar}
           />
+          <Label>Photo de profile</Label>
         </div>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
@@ -98,7 +99,20 @@ export default function EditProfileDialog({
               name="displayName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Display name</FormLabel>
+                  <FormLabel>Nom d'utilisateur</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Your display name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
                   <FormControl>
                     <Input placeholder="Your display name" {...field} />
                   </FormControl>
@@ -111,10 +125,10 @@ export default function EditProfileDialog({
               name="bio"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Bio</FormLabel>
+                  <FormLabel>Biographie</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Tell us a little bit about yourself"
+                      placeholder="Parle nous un peu de toi"
                       className="resize-none"
                       {...field}
                     />
@@ -125,7 +139,7 @@ export default function EditProfileDialog({
             />
             <DialogFooter>
               <LoadingButton type="submit" loading={mutation.isPending}>
-                Save
+                Sauvegarder
               </LoadingButton>
             </DialogFooter>
           </form>
@@ -156,7 +170,7 @@ function AvatarInput({ src, onImageCropped }: AvatarInputProps) {
       100,
       0,
       (uri) => setImageToCrop(uri as File),
-      "file",
+      "file"
     );
   }
 

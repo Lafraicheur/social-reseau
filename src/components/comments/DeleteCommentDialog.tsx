@@ -34,10 +34,10 @@ export default function DeleteCommentDialog({
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Delete comment?</DialogTitle>
+          <DialogTitle>Supprimer le commentaire?</DialogTitle>
           <DialogDescription>
-            Are you sure you want to delete this comment? This action cannot be
-            undone.
+          êtes-vous sûr de vouloir supprimer ce commentaire? Cette action ne peut pas être
+          défait.
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
@@ -46,14 +46,14 @@ export default function DeleteCommentDialog({
             onClick={() => mutation.mutate(comment.id, { onSuccess: onClose })}
             loading={mutation.isPending}
           >
-            Delete
+            Supprimer
           </LoadingButton>
           <Button
             variant="outline"
             onClick={onClose}
             disabled={mutation.isPending}
           >
-            Cancel
+            Annuler
           </Button>
         </DialogFooter>
       </DialogContent>

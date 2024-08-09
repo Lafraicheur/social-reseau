@@ -36,7 +36,7 @@ export default function CropImageDialog({
     <Dialog open onOpenChange={onClose}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Crop image</DialogTitle>
+          <DialogTitle>Recadrer l'image</DialogTitle>
         </DialogHeader>
         <Cropper
           src={src}
@@ -48,9 +48,9 @@ export default function CropImageDialog({
         />
         <DialogFooter>
           <Button variant="secondary" onClick={onClose}>
-            Cancel
+          Annuler
           </Button>
-          <Button onClick={crop}>Crop</Button>
+          <Button onClick={crop}>Recadrer</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

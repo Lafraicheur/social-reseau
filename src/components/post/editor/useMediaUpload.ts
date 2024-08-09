@@ -64,7 +64,7 @@ export default function useMediaUpload() {
     if (isUploading) {
       toast({
         variant: "destructive",
-        description: "Please wait for the current upload to finish.",
+        description: "Veuillez attendre la fin du téléchargement en cours.",
       });
       return;
     }
@@ -72,7 +72,7 @@ export default function useMediaUpload() {
     if (attachments.length + files.length > 5) {
       toast({
         variant: "destructive",
-        description: "You can only upload up to 5 attachments per post.",
+        description: "Vous ne pouvez télécharger que jusqu'à 5 pièces jointes par publication.",
       });
       return;
     }

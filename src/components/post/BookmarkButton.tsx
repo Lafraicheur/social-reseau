@@ -58,7 +58,7 @@ export default function BookmarkButton({
       console.error(error);
       toast({
         variant: "destructive",
-        description: "Something went wrong. Please try again.",
+        description: "Quelque chose s'est mal passé. Veuillez réessayer.",
       });
     },
   });

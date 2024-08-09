@@ -8,7 +8,6 @@ import PostsLoadingSkeleton from "@/components/post/PostsLoadingSkeleton";
 import InfiniteScrollContainer from "@/components/InfiniteScrollContainer";
 import Post from "@/components/post/Post";
 
-
 export default function FollowingFeed() {
   const {
     data,
@@ -39,7 +38,8 @@ export default function FollowingFeed() {
   if (status === "success" && !posts.length && !hasNextPage) {
     return (
       <p className="text-center text-muted-foreground">
-        No posts found. Start following people to see their posts here.
+        Aucune publication trouvé. Commencez à suivre des personnes pour voir
+        leurs publications ici.
       </p>
     );
   }
@@ -47,7 +47,7 @@ export default function FollowingFeed() {
   if (status === "error") {
     return (
       <p className="text-center text-destructive">
-        An error occurred while loading posts.
+        Une erreur s'est produite lors du chargement des publications.{" "}
       </p>
     );
   }

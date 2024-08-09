@@ -43,7 +43,7 @@ export default function PostEditor() {
         italic: false,
       }),
       Placeholder.configure({
-        placeholder: "What's crack-a-lackin'?",
+        placeholder: "Qu'est-ce qui manque ?",
       }),
     ],
   });
@@ -114,7 +114,7 @@ export default function PostEditor() {
           disabled={!input.trim() || isUploading}
           className="min-w-20"
         >
-          Post
+          Publié
         </LoadingButton>
       </div>
     </div>

@@ -22,7 +22,7 @@ export default function Bookmarks() {
       kyInstance
         .get(
           "/api/posts/bookmarked",
-          pageParam ? { searchParams: { cursor: pageParam } } : {},
+          pageParam ? { searchParams: { cursor: pageParam } } : {}
         )
         .json<PostsPage>(),
     initialPageParam: null as string | null,
@@ -38,7 +38,7 @@ export default function Bookmarks() {
   if (status === "success" && !posts.length && !hasNextPage) {
     return (
       <p className="text-center text-muted-foreground">
-        You don&apos;t have any bookmarks yet.
+        Vous n&apos;avez pas encore de favoris.
       </p>
     );
   }
@@ -46,7 +46,7 @@ export default function Bookmarks() {
   if (status === "error") {
     return (
       <p className="text-center text-destructive">
-        An error occurred while loading bookmarks.
+        Une erreur s&apos;est produite lors du chargement des favoris.
       </p>
     );
   }

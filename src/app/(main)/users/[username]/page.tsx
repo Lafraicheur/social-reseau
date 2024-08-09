@@ -59,7 +59,7 @@ export default async function Page({ params: { username } }: PageProps) {
   if (!loggedInUser) {
     return (
       <p className="text-destructive">
-        You&apos;re not authorized to view this page.
+        Vous n&apos;êtes pas autorisé à consulter cette page.
       </p>
     );
   }
@@ -72,7 +72,7 @@ export default async function Page({ params: { username } }: PageProps) {
         <UserProfile user={user} loggedInUserId={loggedInUser.id} />
         <div className="rounded-2xl bg-card p-5 shadow-sm">
           <h2 className="text-center text-2xl font-bold">
-            {user.displayName}&apos;s posts
+            Les Publications de {user.displayName}
           </h2>
         </div>
         <UserPosts userId={user.id} />
@@ -107,11 +107,12 @@ async function UserProfile({ user, loggedInUserId }: UserProfileProps) {
           <div>
             <h1 className="text-3xl font-bold">{user.displayName}</h1>
             <div className="text-muted-foreground">@{user.username}</div>
+            <div className="text-muted-foreground">{user.email}</div>
           </div>
-          <div>Member since {formatDate(user.createdAt, "MMM d, yyyy")}</div>
+          <div>Membres depuis le {formatDate(user.createdAt, "dd-MM-yyyy à hh:mm:ss")}</div>
           <div className="flex items-center gap-3">
             <span>
-              Posts:{" "}
+              Publications:{" "}
               <span className="font-semibold">
                 {formatNumber(user._count.posts)}
               </span>
