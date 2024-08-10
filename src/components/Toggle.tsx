@@ -1,8 +1,7 @@
-// src/components/Toggle.tsx
 import React from "react";
 
 interface ToggleProps {
-  label: string;
+  label: React.ReactNode; // Utilisez React.ReactNode pour accepter des éléments JSX
   checked: boolean;
   onChange: (checked: boolean) => void;
 }
