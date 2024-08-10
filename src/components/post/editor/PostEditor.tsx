@@ -64,7 +64,7 @@ export default function PostEditor() {
           editor?.commands.clearContent();
           resetMediaUploads();
         },
-      },
+      }
     );
   }
 
@@ -84,7 +84,7 @@ export default function PostEditor() {
             editor={editor}
             className={cn(
               "max-h-[20rem] w-full overflow-y-auto rounded-2xl bg-background px-5 py-3",
-              isDragActive && "outline-dashed",
+              isDragActive && "outline-dashed"
             )}
             onPaste={onPaste}
           />
@@ -173,8 +173,9 @@ function AttachmentPreviews({
   return (
     <div
       className={cn(
-        "flex flex-col gap-3",
-        attachments.length > 1 && "sm:grid sm:grid-cols-2",
+        "grid gap-3",
+        attachments.length > 1 &&
+          "grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
       )}
     >
       {attachments.map((attachment) => (

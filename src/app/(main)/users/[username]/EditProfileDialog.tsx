@@ -114,7 +114,7 @@ export default function EditProfileDialog({
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="Your display name" {...field} />
+                    <Input placeholder="Your display name" type='email' {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

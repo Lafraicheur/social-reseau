@@ -1,9 +1,9 @@
 "use client";
 
+import React, { useState } from "react";
 import { useSession } from "@/app/(main)/SessionProvider";
 import { FollowerInfo, UserData } from "@/lib/types";
 import Link from "next/link";
-import { PropsWithChildren } from "react";
 import FollowButton from "./FollowButton";
 import FollowerCount from "./FollowerCount";
 import Linkify from "./Linkify";
@@ -15,12 +15,14 @@ import {
 } from "./ui/tooltip";
 import UserAvatar from "./UserAvatar";
 
-interface UserTooltipProps extends PropsWithChildren {
+interface UserTooltipProps {
   user: UserData;
+  children: React.ReactNode;
 }
 
 export default function UserTooltip({ children, user }: UserTooltipProps) {
   const { user: loggedInUser } = useSession();
+  const [isTooltipVisible, setTooltipVisible] = useState(false);
 
   const followerState: FollowerInfo = {
     followers: user._count.followers,
@@ -29,11 +31,26 @@ export default function UserTooltip({ children, user }: UserTooltipProps) {
     ),
   };
 
+  const handleTouchStart = () => {
+    // Toggle visibility on touch devices
+    setTooltipVisible(!isTooltipVisible);
+  };
+
+  const handleTooltipClose = () => {
+    setTooltipVisible(false);
+  };
+
   return (
     <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger asChild>{children}</TooltipTrigger>
-        <TooltipContent>
+      <Tooltip open={isTooltipVisible} onOpenChange={setTooltipVisible}>
+        <TooltipTrigger
+          asChild
+          onTouchStart={handleTouchStart}
+          onClick={() => setTooltipVisible(true)}
+        >
+          {children}
+        </TooltipTrigger>
+        <TooltipContent onClick={handleTooltipClose}>
           <div className="flex max-w-80 flex-col gap-3 break-words px-1 py-2.5 md:min-w-52">
             <div className="flex items-center justify-between gap-2">
               <Link href={`/users/${user.username}`}>

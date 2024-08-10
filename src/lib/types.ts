@@ -124,6 +124,7 @@ export interface LikeInfo {
   isLikedByUser: boolean;
 }
 
+
 export interface BookmarkInfo {
   isBookmarkedByUser: boolean;
 }

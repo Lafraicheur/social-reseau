@@ -49,11 +49,11 @@ export default function Notification({ notification }: NotificationProps) {
             <div>{message}</div>
           </div>
         </div>
-        {notification.post && (
+        {/* {notification.post && (
           <div className="line-clamp-3 whitespace-pre-line text-muted-foreground mt-2">
             {notification.post.content}
           </div>
-        )}
+        )} */}
       </article>
     </Link>
   );

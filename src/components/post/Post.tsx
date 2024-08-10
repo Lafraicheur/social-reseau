@@ -4,7 +4,7 @@ import { PostData } from "@/lib/types";
 import Image from "next/image";
 import Link from "next/link";
 import UserAvatar from "../UserAvatar";
-import {cn, formatRelativeDate } from "@/lib/utils";
+import { cn, formatRelativeDate } from "@/lib/utils";
 import { useSession } from "@/app/(main)/SessionProvider";
 import { useState } from "react";
 import PostMoreButton from "./PostMoreButton";
@@ -15,11 +15,6 @@ import LikeButton from "./LikeButton";
 import BookmarkButton from "./BookmarkButton";
 import { MessageSquare } from "lucide-react";
 import Comments from "../comments/Comments";
-
-
-
-
-
 
 interface PostProps {
   post: PostData;
@@ -74,8 +69,8 @@ export default function Post({ post }: PostProps) {
       )}
       <hr className="text-muted-foreground" />
       <div className="flex justify-between gap-5">
-      <div className="flex items-center gap-5">
-      <LikeButton
+        <div className="flex items-center gap-5">
+          <LikeButton
             postId={post.id}
             initialState={{
               likes: post._count.likes,
@@ -86,20 +81,18 @@ export default function Post({ post }: PostProps) {
             post={post}
             onClick={() => setShowComments(!showComments)}
           />
-</div>
-<BookmarkButton
+        </div>
+        <BookmarkButton
           postId={post.id}
           initialState={{
             isBookmarkedByUser: post.bookmarks.some(
-              (bookmark) => bookmark.userId === user.id,
+              (bookmark) => bookmark.userId === user.id
             ),
           }}
         />
+      </div>
 
-</div>
-
-{showComments && <Comments post={post} />}
-
+      {showComments && <Comments post={post} />}
     </article>
   );
 }
@@ -112,8 +105,9 @@ function MediaPreviews({ attachments }: MediaPreviewsProps) {
   return (
     <div
       className={cn(
-        "flex flex-col gap-3",
-        attachments.length > 1 && "sm:grid sm:grid-cols-2",
+        "grid gap-3",
+        attachments.length > 1 &&
+          "grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
       )}
     >
       {attachments.map((m) => (

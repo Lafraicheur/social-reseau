@@ -1,7 +1,7 @@
 import { validateRequest } from "@/auth";
 import { Button } from "@/components/ui/button";
 import prisma from "@/lib/prisma";
-import { Bookmark, Home, Bell, Mail, Heart } from "lucide-react";
+import { Bookmark, Home, Bell, Mail, Heart, Settings } from "lucide-react";
 import Link from "next/link";
 import NotificationsButton from "./NotificationsButton";
 import MessagesButton from "./MessagesButton";
@@ -60,17 +60,17 @@ export default async function MenuBar({ className }: MenuBarProps) {
         </Link>
       </Button>
 
-      {/* <Button
+      <Button
         variant="ghost"
         className="flex items-center justify-start gap-3"
         title="Bookmarks"
         asChild
       >
-        <Link href="#">
-          <Heart />
-          <span className="hidden lg:inline">Favories</span>
+        <Link href="/settings">
+          <Settings />
+          <span className="hidden lg:inline">Parametres</span>
         </Link>
-      </Button> */}
+      </Button>
     </div>
   );
 }
