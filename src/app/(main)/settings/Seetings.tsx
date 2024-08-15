@@ -16,24 +16,26 @@ import { MdEmail } from "react-icons/md";
 export default function Settings() {
   const { theme, setTheme } = useTheme();
   const shareUrl = "https://social-reseau.vercel.app/";
+  const description = "✨ Découvre une nouvelle manière de te connecter ! 🚀 Jette un coup d'œil à notre application innovante qui transforme ton expérience numérique. Que tu sois en quête d'une nouvelle passion ou que tu veuilles simplement découvrir quelque chose de frais et excitant, cette application a tout ce qu'il te faut !";
+
 
   const encodeURIComponentForShare = (text: string) => encodeURIComponent(text);
 
   // Fonction pour partager sur WhatsApp
   const handleShareWhatsapp = () => {
-    const whatsappShareUrl = `https://wa.me/?text=${encodeURIComponentForShare(shareUrl)}`;
+    const whatsappShareUrl = `https://wa.me/?text=${encodeURIComponentForShare(description + " " + shareUrl)}`;
     window.open(whatsappShareUrl, "_blank");
   };
 
   // Fonction pour partager sur Facebook
   const handleShareFacebook = () => {
-    const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponentForShare(shareUrl)}`;
+    const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponentForShare(shareUrl)}&quote=${encodeURIComponentForShare(description)}`;
     window.open(facebookShareUrl, "_blank");
   };
 
   // Fonction pour partager par Gmail
   const handleShareGmail = () => {
-    const gmailShareUrl = `mailto:?subject=Check this out&body=${encodeURIComponentForShare(shareUrl)}`;
+    const gmailShareUrl = `mailto:?subject=Check this out&body=${encodeURIComponentForShare(description + " " + shareUrl)}`;
     window.location.href = gmailShareUrl;
   };
 
@@ -46,7 +48,7 @@ export default function Settings() {
 
   // Fonction pour partager sur Telegram
   const handleShareTelegram = () => {
-    const telegramShareUrl = `https://t.me/share/url?url=${encodeURIComponentForShare(shareUrl)}`;
+    const telegramShareUrl = `https://t.me/share/url?url=${encodeURIComponentForShare(shareUrl)}&text=${encodeURIComponentForShare(description)}`;
     window.open(telegramShareUrl, "_blank");
   };
 
