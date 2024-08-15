@@ -1,7 +1,4 @@
-import Image from "next/image";
 import PostEditor from "@/components/post/editor/PostEditor";
-import prisma from "@/lib/prisma";
-import Post from "@/components/post/Post";
 import TrendsSidebar from "@/components/TrendsSidebar";
 import UsersListe from "@/components/UsersListe";
 

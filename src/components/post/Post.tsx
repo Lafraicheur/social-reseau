@@ -37,12 +37,9 @@ export default function Post({ post }: PostProps) {
 
           <div>
             <UserTooltip user={post.user}>
-              <Link
-                href={`/users/${post.user.username}`}
-                className="block font-medium hover:underline"
-              >
+              <div className="flex items-center gap-3 cursor-pointer">
                 {post.user.displayName}
-              </Link>
+              </div>
             </UserTooltip>
 
             <Link

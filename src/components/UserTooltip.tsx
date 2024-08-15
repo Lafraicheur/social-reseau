@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation"; // Utiliser next/navigation pour les hooks de navigation
 import { useSession } from "@/app/(main)/SessionProvider";
 import { FollowerInfo, UserData } from "@/lib/types";
 import Link from "next/link";
@@ -14,6 +15,7 @@ import {
   TooltipTrigger,
 } from "./ui/tooltip";
 import UserAvatar from "./UserAvatar";
+import { MessageCircle } from "lucide-react";
 
 interface UserTooltipProps {
   user: UserData;
@@ -22,12 +24,13 @@ interface UserTooltipProps {
 
 export default function UserTooltip({ children, user }: UserTooltipProps) {
   const { user: loggedInUser } = useSession();
+  const router = useRouter(); // Utiliser useRouter pour la redirection
   const [isTooltipVisible, setTooltipVisible] = useState(false);
 
   const followerState: FollowerInfo = {
     followers: user._count.followers,
     isFollowedByUser: !!user.followers.some(
-      ({ followerId }) => followerId === loggedInUser.id,
+      ({ followerId }) => followerId === loggedInUser.id
     ),
   };
 
@@ -37,6 +40,12 @@ export default function UserTooltip({ children, user }: UserTooltipProps) {
   };
 
   const handleTooltipClose = () => {
+    setTooltipVisible(false);
+  };
+
+  const handleSendMessage = () => {
+    // Rediriger vers la page de chat avec l'utilisateur sélectionné
+    router.push(`/messages?userId=${user.id}`);
     setTooltipVisible(false);
   };
 
@@ -56,6 +65,9 @@ export default function UserTooltip({ children, user }: UserTooltipProps) {
               <Link href={`/users/${user.username}`}>
                 <UserAvatar size={70} avatarUrl={user.avatarUrl} />
               </Link>
+              <button onClick={handleSendMessage}>
+                <MessageCircle />
+              </button>
               {loggedInUser.id !== user.id && (
                 <FollowButton userId={user.id} initialState={followerState} />
               )}

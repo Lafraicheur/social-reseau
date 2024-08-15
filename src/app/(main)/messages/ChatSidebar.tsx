@@ -12,10 +12,6 @@ import { useCallback, useEffect, useState } from "react";
 import NewChatDialog from "./NewChatDialog";
 import { useQueryClient } from "@tanstack/react-query";
 
-
-
-
-
 interface ChatSidebarProps {
   open: boolean;
   onClose: () => void;
@@ -26,7 +22,6 @@ export default function ChatSidebar({ open, onClose }: ChatSidebarProps) {
 
   const queryClient = useQueryClient();
 
-
   const { channel } = useChatContext();
 
   useEffect(() => {
@@ -34,7 +29,6 @@ export default function ChatSidebar({ open, onClose }: ChatSidebarProps) {
       queryClient.invalidateQueries({ queryKey: ["unread-messages-count"] });
     }
   }, [channel?.id, queryClient]);
-
 
   const ChannelPreviewCustom = useCallback(
     (props: ChannelPreviewUIComponentProps) => (
@@ -46,7 +40,7 @@ export default function ChatSidebar({ open, onClose }: ChatSidebarProps) {
         }}
       />
     ),
-    [onClose],
+    [onClose]
   );
 
   return (
@@ -57,24 +51,25 @@ export default function ChatSidebar({ open, onClose }: ChatSidebarProps) {
       )}
     >
       <MenuHeader onClose={onClose} />
-      <ChannelList
-        filters={{
-          type: "messaging",
-          members: { $in: [user.id] },
-        }}
-        showChannelSearch
-        options={{ state: true, presence: true, limit: 8 }}
-        sort={{ last_message_at: -1 }}
-        additionalChannelSearchProps={{
-          searchForChannels: true,
-          searchQueryParams: {
-            channelFilters: {
-              filters: { members: { $in: [user.id] } },
+        <ChannelList
+          filters={{
+            type: "messaging",
+            members: { $in: [user.id] },
+          }}
+          showChannelSearch
+          options={{ state: true, presence: true, limit: 8 }}
+          sort={{ last_message_at: -1 }}
+          additionalChannelSearchProps={{
+            searchForChannels: true,
+            searchQueryParams: {
+              channelFilters: {
+                filters: { members: { $in: [user.id] } },
+              },
             },
-          },
-        }}
-        Preview={ChannelPreviewCustom}
-      />
+          }}
+          Preview={ChannelPreviewCustom}
+        />
+     
     </div>
   );
 }
@@ -84,7 +79,7 @@ interface MenuHeaderProps {
 }
 
 function MenuHeader({ onClose }: MenuHeaderProps) {
-    const [showNewChatDialog, setShowNewChatDialog] = useState(false);
+  const [showNewChatDialog, setShowNewChatDialog] = useState(false);
 
   return (
     <>
@@ -98,8 +93,8 @@ function MenuHeader({ onClose }: MenuHeaderProps) {
         <Button
           size="icon"
           variant="ghost"
-          title="Start new chat"
-            onClick={() => setShowNewChatDialog(true)}
+          title="Démarrer une nouvelle discussion"
+          onClick={() => setShowNewChatDialog(true)}
         >
           <MailPlus className="size-5" />
         </Button>

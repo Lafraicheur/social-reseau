@@ -19,10 +19,10 @@ const geistMono = localFont({
 });
 export const metadata: Metadata = {
   title: {
-    template: "%s | UiciChatok",
-    default: "UiciChatok",
+    template: "%s | UICIBGAIRAI",
+    default: "UICIGBAIRAI",
   },
-  description: "The social media app for powernerds",
+  description: "Le Réseau Social de UICI",
 };
 
 export default function RootLayout({

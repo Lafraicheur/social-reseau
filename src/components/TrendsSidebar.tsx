@@ -47,10 +47,7 @@ async function WhoToFollow() {
       {usersToFollow.map((user) => (
         <div key={user.id} className="flex items-center justify-between gap-3">
           <UserTooltip user={user}>
-            <Link
-              href={`/users/${user.username}`}
-              className="flex items-center gap-3"
-            >
+            <div className="flex items-center gap-3 cursor-pointer">
               <UserAvatar avatarUrl={user.avatarUrl} className="flex-none" />
               <div>
                 <p className="line-clamp-1 break-all font-semibold hover:underline">
@@ -60,7 +57,7 @@ async function WhoToFollow() {
                   @{user.username}
                 </p>
               </div>
-            </Link>
+            </div>
           </UserTooltip>
 
           <FollowButton
@@ -74,8 +71,11 @@ async function WhoToFollow() {
           />
         </div>
       ))}
-      <Link href="/allusers" className="mt-4 block text-center font-semibold text-green-600 hover:underline">
-          Voir plus 😉
+      <Link
+        href="/allusers"
+        className="mt-4 block text-center font-semibold text-green-600 hover:underline"
+      >
+        Voir plus 😉
       </Link>
     </div>
   );

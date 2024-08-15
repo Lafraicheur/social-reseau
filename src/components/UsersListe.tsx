@@ -36,9 +36,9 @@ async function WhoToFollow() {
     },
     select: getUserDataSelect(user.id),
     orderBy: {
-      createdAt: 'desc', // Tri par date de création, du plus récent au plus ancien
+      createdAt: "desc", // Tri par date de création, du plus récent au plus ancien
     },
-    take: 2, // Limiter à 4 utilisateurs
+    take: 2, // Limiter à 2 utilisateurs
   });
 
   return (
@@ -47,17 +47,14 @@ async function WhoToFollow() {
       {usersToFollow.map((user) => (
         <div key={user.id} className="flex items-center justify-between gap-3">
           <UserTooltip user={user}>
-            <Link
-              href={`/users/${user.username}`}
-              className="flex items-center gap-3"
-            >
+            <div className="flex items-center gap-3 cursor-pointer">
               <UserAvatar avatarUrl={user.avatarUrl} className="flex-none" />
               <div>
                 <p className="line-clamp-1 break-all font-semibold hover:underline">
                   {user.displayName}
                 </p>
               </div>
-            </Link>
+            </div>
           </UserTooltip>
 
           <FollowButton
@@ -67,12 +64,15 @@ async function WhoToFollow() {
               isFollowedByUser: user.followers.some(
                 ({ followerId }) => followerId === user.id
               ),
-            }}  
+            }}
           />
         </div>
       ))}
-      <Link href="/allusers" className="mt-4 block text-center text-green-600 hover:underline">
-          Voir plus 😉
+      <Link
+        href="/allusers"
+        className="mt-4 block text-center text-green-600 hover:underline"
+      >
+        Voir plus 😉
       </Link>
     </div>
   );

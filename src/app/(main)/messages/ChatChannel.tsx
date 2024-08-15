@@ -13,6 +13,7 @@ import {
 interface ChatChannelProps {
   open: boolean;
   openSidebar: () => void;
+
 }
 
 export default function ChatChannel({ open, openSidebar }: ChatChannelProps) {

@@ -109,7 +109,7 @@ async function UserProfile({ user, loggedInUserId }: UserProfileProps) {
             <div className="text-muted-foreground">@{user.username}</div>
             <div className="text-muted-foreground">{user.email}</div>
           </div>
-          <div>Membres depuis le {formatDate(user.createdAt, "dd-MM-yyyy à hh:mm:ss")}</div>
+          <div>Membres depuis le {formatDate(user.createdAt, "dd-MM-yyyy à HH:mm:ss")}</div>
           <div className="flex items-center gap-3">
             <span>
               Publications:{" "}

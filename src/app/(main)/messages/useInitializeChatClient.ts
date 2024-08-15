@@ -1,7 +1,9 @@
-import kyInstance from "@/lib/ky";
+"use client";
+
 import { useEffect, useState } from "react";
 import { StreamChat } from "stream-chat";
 import { useSession } from "../SessionProvider";
+import kyInstance from "@/lib/ky";
 
 export default function useInitializeChatClient() {
   const { user } = useSession();
@@ -18,21 +20,17 @@ export default function useInitializeChatClient() {
           name: user.displayName,
           image: user.avatarUrl,
         },
-        async () =>
-          kyInstance
-            .get("/api/get-token")
-            .json<{ token: string }>()
-            .then((data) => data.token),
+        async () => {
+          const response = await kyInstance.get("/api/get-token").json<{ token: string }>();
+          return response.token;
+        }
       )
       .catch((error) => console.error("Failed to connect user", error))
       .then(() => setChatClient(client));
 
     return () => {
       setChatClient(null);
-      client
-        .disconnectUser()
-        .catch((error) => console.error("Failed to disconnect user", error))
-        .then(() => console.log("Connection closed"));
+      client.disconnectUser().catch((error) => console.error("Failed to disconnect user", error));
     };
   }, [user.id, user.username, user.displayName, user.avatarUrl]);
 
